@@ -2,7 +2,9 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <chrono>
 #include "solver.cpp"
+using namespace std::chrono;
 using namespace std;
 
 vector<vector<char>> getPuzzle(ifstream &InputText)
@@ -111,6 +113,10 @@ int main()
     //     cout << word[i] << endl;
     // }
 
+    // Start runtime
+    auto start = high_resolution_clock::now();
+
+    // Check for every iteration for every word
     for (int i = 0; i < word.size(); i++)
     {
         cout << "Word " << i + 1 << ": " << endl << endl;
@@ -123,6 +129,11 @@ int main()
         searchDiagonalLeftUp(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash);
         searchDiagonalLeftDown(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash);
     }
+
+    auto stop = high_resolution_clock::now();
+
+    auto duration = duration_cast<microseconds>(stop - start);
+    cout << "Execution Time: " << (float) (duration.count())/1000000 << " microseconds" << endl;
 
     InputText.close();
 }
