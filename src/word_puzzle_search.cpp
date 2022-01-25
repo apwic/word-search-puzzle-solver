@@ -106,16 +106,17 @@ int main()
     auto start = high_resolution_clock::now();
 
     // Check for every iteration for every word
+    int compareCount = 0;
     for (int i = 0; i < word.size(); i++)
     {
-        searchHorizontalRight(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i);
-        searchHorizontalLeft(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i);
-        searchVerticalUp(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i);
-        searchVerticalDown(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i);
-        searchDiagonalRightUp(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i);
-        searchDiagonalRightDown(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i);
-        searchDiagonalLeftUp(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i);
-        searchDiagonalLeftDown(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i);
+        searchHorizontalRight(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i, compareCount);
+        searchHorizontalLeft(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i, compareCount);
+        searchVerticalUp(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i, compareCount);
+        searchVerticalDown(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i, compareCount);
+        searchDiagonalRightUp(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i, compareCount);
+        searchDiagonalRightDown(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i, compareCount);
+        searchDiagonalLeftUp(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i, compareCount);
+        searchDiagonalLeftDown(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i, compareCount);
     }
 
     auto stop = high_resolution_clock::now();
@@ -123,7 +124,8 @@ int main()
 
     cout << endl;
     printHash(puzzle, puzzleHash);
-    cout << "Execution Time: " << (float)(duration.count()) / 1000000 << " seconds" << endl;
+    cout << "Execution Time    : " << (float)(duration.count()) / 1000000 << " seconds" << endl;
+    cout << "Total Comparision : " << compareCount << endl;
 
     InputText.close();
 }

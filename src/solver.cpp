@@ -70,7 +70,7 @@ void printHash(vector<vector<char>> puzzle, vector<vector<int>> puzzleHash)
 }
 
 void searchHorizontalRight(vector<vector<char>> puzzle, int row, int col,
-string word, vector<vector<int>> &puzzleHash, int wordNumber)
+string word, vector<vector<int>> &puzzleHash, int wordNumber, int &compareCount)
 {
     bool found = false;
     int wordSize = word.size();
@@ -89,7 +89,7 @@ string word, vector<vector<int>> &puzzleHash, int wordNumber)
                 {
                     break;
                 }
-
+                compareCount++;
                 if (puzzle[i][k] == word[k - j])
                 {
                     wordCount++;
@@ -125,7 +125,7 @@ string word, vector<vector<int>> &puzzleHash, int wordNumber)
 }
 
 void searchHorizontalLeft(vector<vector<char>> puzzle, int row, int col,
-string word, vector<vector<int>> &puzzleHash, int wordNumber)
+string word, vector<vector<int>> &puzzleHash, int wordNumber, int &compareCount)
 {
     bool found = false;
     int wordSize = word.size();
@@ -144,7 +144,7 @@ string word, vector<vector<int>> &puzzleHash, int wordNumber)
                 {
                     break;
                 }
-
+                compareCount++;
                 if (puzzle[i][k] == word[j - k])
                 {
                     wordCount++;
@@ -180,7 +180,7 @@ string word, vector<vector<int>> &puzzleHash, int wordNumber)
 }
 
 void searchVerticalUp(vector<vector<char>> puzzle, int row, int col,
-string word, vector<vector<int>> &puzzleHash, int wordNumber)
+string word, vector<vector<int>> &puzzleHash, int wordNumber, int &compareCount)
 {
     bool found = false;
     int wordSize = word.size();
@@ -199,7 +199,7 @@ string word, vector<vector<int>> &puzzleHash, int wordNumber)
                 {
                     break;
                 }
-
+                compareCount++;
                 if (puzzle[k][j] == word[i - k])
                 {
                     wordCount++;
@@ -235,7 +235,7 @@ string word, vector<vector<int>> &puzzleHash, int wordNumber)
 }
 
 void searchVerticalDown(vector<vector<char>> puzzle, int row, int col,
-string word, vector<vector<int>> &puzzleHash, int wordNumber)
+string word, vector<vector<int>> &puzzleHash, int wordNumber, int &compareCount)
 {
     bool found = false;
     int wordSize = word.size();
@@ -254,7 +254,7 @@ string word, vector<vector<int>> &puzzleHash, int wordNumber)
                 {
                     break;
                 }
-
+                compareCount++;
                 if (puzzle[k][j] == word[k - i])
                 {
                     wordCount++;
@@ -290,7 +290,7 @@ string word, vector<vector<int>> &puzzleHash, int wordNumber)
 }
 
 void searchDiagonalRightUp(vector<vector<char>> puzzle, int row, int col,
-string word, vector<vector<int>> &puzzleHash, int wordNumber)
+string word, vector<vector<int>> &puzzleHash, int wordNumber, int &compareCount)
 {
     bool found = false;
     int wordSize = word.size();
@@ -311,7 +311,7 @@ string word, vector<vector<int>> &puzzleHash, int wordNumber)
                 {
                     break;
                 }
-
+                compareCount++;
                 if (puzzle[k][l] == word[i - k])
                 {
                     wordCount++;
@@ -353,7 +353,7 @@ string word, vector<vector<int>> &puzzleHash, int wordNumber)
 }
 
 void searchDiagonalRightDown(vector<vector<char>> puzzle, int row, int col,
-string word, vector<vector<int>> &puzzleHash, int wordNumber)
+string word, vector<vector<int>> &puzzleHash, int wordNumber, int &compareCount)
 {
     bool found = false;
     int wordSize = word.size();
@@ -374,7 +374,7 @@ string word, vector<vector<int>> &puzzleHash, int wordNumber)
                 {
                     break;
                 }
-
+                compareCount++;
                 if (puzzle[k][l] == word[k - i])
                 {
                     wordCount++;
@@ -416,7 +416,7 @@ string word, vector<vector<int>> &puzzleHash, int wordNumber)
 }
 
 void searchDiagonalLeftUp(vector<vector<char>> puzzle, int row, int col,
-string word, vector<vector<int>> &puzzleHash, int wordNumber)
+string word, vector<vector<int>> &puzzleHash, int wordNumber, int &compareCount)
 {
     bool found = false;
     int wordSize = word.size();
@@ -437,7 +437,7 @@ string word, vector<vector<int>> &puzzleHash, int wordNumber)
                 {
                     break;
                 }
-
+                compareCount++;
                 if (puzzle[k][l] == word[i - k])
                 {
                     wordCount++;
@@ -479,7 +479,7 @@ string word, vector<vector<int>> &puzzleHash, int wordNumber)
 }
 
 void searchDiagonalLeftDown(vector<vector<char>> puzzle, int row, int col,
-string word, vector<vector<int>> &puzzleHash, int wordNumber)
+string word, vector<vector<int>> &puzzleHash, int wordNumber, int &compareCount)
 {
     bool found = false;
     int wordSize = word.size();
@@ -500,7 +500,7 @@ string word, vector<vector<int>> &puzzleHash, int wordNumber)
                 {
                     break;
                 }
-
+                compareCount++;
                 if (puzzle[k][l] == word[j - l])
                 {
                     wordCount++;
