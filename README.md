@@ -55,7 +55,7 @@ Room for improvement:
 - Projek ini terbatas deadline, sehingga code secara keseluruhan agak berantakan dan dapat dikembangkan lebih rapih lagi
 
 ## Acknowledgements
-- Projek ini dikerjakan untuk memenuhi tugas besar mata kuliah IF2211 Strategi Algoritma
+- Projek ini dikerjakan untuk memenuhi tugas kecil mata kuliah IF2211 Strategi Algoritma
 - Terima kasih kepada seluruh dosen pengajar mata kuliah IF2211 Strategi Algoritma
 
 ## Contact
