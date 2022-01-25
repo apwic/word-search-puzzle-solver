@@ -21,12 +21,8 @@ tersembunyi dalam kumpulan huruf acak. Kumpulan huruf tersebut biasa diletakkan 
 berbentuk segi empat atau dapat disebut juga matriks huruf. Kata-kata pada matriks huruf ini dapat
 ditemukan dalam delapan arah yang mungkin, yaitu, vertikal ke atas, vertikal ke bawah, horizontal
 ke kanan, horizontal ke kiri, diagonal ke kanan atas, diagonal ke kanan bawah, diagonal ke kiri
-atas, dan diagonal ke kiri bawah. Word search puzzle pertama kali dibuat oleh Noeman E. Gibat.
-Puzzle ini dipublikasikan dalam the Selenby Digest pada 1 Maret 1968 di Norman, Oklahoma.
-Setelah itu word search puzzle mulai terkenal di daerahnya. Kemudian beberapa guru meminta
-salinannya untuk digunakan sebagai alat mengajar. Akhirnya permainan itu tersebar setelah
-seorang guru mengirimkan salinannya kepada teman-teman di kota lain. Sekarang word search
-puzzle bisa ditemukan dengan mudah di koran, majalah, bahkan internet
+atas, dan diagonal ke kiri bawah. Program ini dibuat untuk menyelesaikan word search puzzle ini
+secara *brute force*.
 
 
 ## Technologies Used
