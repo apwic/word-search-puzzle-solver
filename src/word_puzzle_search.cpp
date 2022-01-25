@@ -73,6 +73,7 @@ int main()
     string path;
     path = "../test/" + fileName;
     ifstream InputText(path);
+    // ofstream saveFile("answer.txt");
 
     while (!InputText){
         cout << "File name doesn't exist, please try again!" << endl;
@@ -91,13 +92,13 @@ int main()
     vector<string> word = getWord(InputText);
 
     // Create Boolean Hash Table
-    vector<vector<bool>> puzzleHash;
+    vector<vector<int>> puzzleHash;
     for (int i = 0; i < puzzle.size(); i++)
     {
         puzzleHash.push_back({});
         for (int j = 0; j < puzzle[0].size(); j++)
         {
-            puzzleHash[i].push_back(false);
+            puzzleHash[i].push_back(0);
         }
     }
 
@@ -119,21 +120,21 @@ int main()
     // Check for every iteration for every word
     for (int i = 0; i < word.size(); i++)
     {
-        cout << "Word " << i + 1 << ": " << endl << endl;
-        searchHorizontalRight(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash);
-        searchHorizontalLeft(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash);
-        searchVerticalUp(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash);
-        searchVerticalDown(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash);
-        searchDiagonalRightUp(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash);
-        searchDiagonalRightDown(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash);
-        searchDiagonalLeftUp(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash);
-        searchDiagonalLeftDown(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash);
+        searchHorizontalRight(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i);
+        searchHorizontalLeft(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i);
+        searchVerticalUp(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i);
+        searchVerticalDown(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i);
+        searchDiagonalRightUp(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i);
+        searchDiagonalRightDown(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i);
+        searchDiagonalLeftUp(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i);
+        searchDiagonalLeftDown(puzzle, puzzle.size(), puzzle[0].size(), word[i], puzzleHash, i);
     }
 
     auto stop = high_resolution_clock::now();
-
     auto duration = duration_cast<microseconds>(stop - start);
-    cout << "Execution Time: " << (float) (duration.count())/1000000 << " microseconds" << endl;
+
+    printHash(puzzle, puzzleHash);
+    cout << "Execution Time: " << (float) (duration.count())/1000000 << " seconds" << endl;
 
     InputText.close();
 }
