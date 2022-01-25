@@ -56,7 +56,7 @@ Room for improvement:
 
 ## Acknowledgements
 - Projek ini dikerjakan untuk memenuhi tugas kecil mata kuliah IF2211 Strategi Algoritma
-- Terima kasih kepada seluruh dosen pengajar mata kuliah IF2211 Strategi Algoritma
+- Terima kasih kepada seluruh dosen pengajar dan asisten mata kuliah IF2211 Strategi Algoritma
 
 ## Contact
 Created by:
