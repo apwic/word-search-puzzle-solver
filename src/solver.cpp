@@ -1,12 +1,12 @@
-#define RESET   "\033[0m"
-#define BLACK   "\033[30m"      /* Black */
-#define RED     "\033[31m"      /* Red */
-#define GREEN   "\033[32m"      /* Green */
-#define YELLOW  "\033[33m"      /* Yellow */
-#define BLUE    "\033[34m"      /* Blue */
-#define MAGENTA "\033[35m"      /* Magenta */
-#define CYAN    "\033[36m"      /* Cyan */
-#define WHITE   "\033[37m"      /* White */
+#define RESET "\033[0m"
+#define BLACK "\033[30m"   /* Black */
+#define RED "\033[31m"     /* Red */
+#define GREEN "\033[32m"   /* Green */
+#define YELLOW "\033[33m"  /* Yellow */
+#define BLUE "\033[34m"    /* Blue */
+#define MAGENTA "\033[35m" /* Magenta */
+#define CYAN "\033[36m"    /* Cyan */
+#define WHITE "\033[37m"   /* White */
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -30,7 +30,7 @@ void printHash(vector<vector<char>> puzzle, vector<vector<int>> puzzleHash)
 
             else if (puzzleHash[i][j] == 2)
             {
-                cout << BLACK << puzzle[i][j] << RESET << " ";
+                cout << CYAN << puzzle[i][j] << RESET << " ";
             }
 
             else if (puzzleHash[i][j] == 3)
@@ -58,14 +58,9 @@ void printHash(vector<vector<char>> puzzle, vector<vector<int>> puzzleHash)
                 cout << MAGENTA << puzzle[i][j] << RESET << " ";
             }
 
-            else if (puzzleHash[i][j] == 8)
-            {
-                cout << CYAN << puzzle[i][j] << RESET << " ";
-            }
-
             else
             {
-                cout << "_ ";
+                cout << BLACK << puzzle[i][j] << RESET << " ";
             }
         }
         cout << endl;
@@ -74,37 +69,8 @@ void printHash(vector<vector<char>> puzzle, vector<vector<int>> puzzleHash)
     cout << endl;
 }
 
-void savePrintHash(vector<vector<char>> puzzle, vector<vector<int>> &puzzleHash, ofstream saveFile)
-{
-    int i, j;
-    int row = puzzle.size();
-    int col = puzzle[0].size();
-
-    for (i = 0; i < row; i++)
-    {
-        for (j = 0; j < col; j++)
-        {
-            if (puzzleHash[i][j] == true)
-            {
-                saveFile << puzzle[i][j] << " ";
-            }
-            else
-            {
-                saveFile << "_ ";
-            }
-        }
-        saveFile << endl;
-    }
-
-    saveFile << endl;
-}
-
-// void puzzleHashSaver(vector<vector<int>> &puzzleHash, int i, int j){
-//     puzzleHash[i][j] = (puzzleHash[i][j]) + 1;
-//     cout << puzzleHash[i][j] << endl;
-// }
-
-void searchHorizontalRight(vector<vector<char>> puzzle, int row, int col, string word, vector<vector<int>> &puzzleHash, int wordNumber)
+void searchHorizontalRight(vector<vector<char>> puzzle, int row, int col,
+string word, vector<vector<int>> &puzzleHash, int wordNumber)
 {
     bool found = false;
     int wordSize = word.size();
@@ -153,12 +119,13 @@ void searchHorizontalRight(vector<vector<char>> puzzle, int row, int col, string
 
         for (j = q; j - q < wordSize; j++)
         {
-            puzzleHash[p][j] = (wordNumber % 8) + 1;
+            puzzleHash[p][j] = (wordNumber % 7) + 1;
         }
     }
 }
 
-void searchHorizontalLeft(vector<vector<char>> puzzle, int row, int col, string word, vector<vector<int>> &puzzleHash, int wordNumber)
+void searchHorizontalLeft(vector<vector<char>> puzzle, int row, int col,
+string word, vector<vector<int>> &puzzleHash, int wordNumber)
 {
     bool found = false;
     int wordSize = word.size();
@@ -207,12 +174,13 @@ void searchHorizontalLeft(vector<vector<char>> puzzle, int row, int col, string 
 
         for (j = q; q - j < wordSize; j--)
         {
-            puzzleHash[p][j] = (wordNumber % 8) + 1;
+            puzzleHash[p][j] = (wordNumber % 7) + 1;
         }
     }
 }
 
-void searchVerticalUp(vector<vector<char>> puzzle, int row, int col, string word, vector<vector<int>> &puzzleHash, int wordNumber)
+void searchVerticalUp(vector<vector<char>> puzzle, int row, int col,
+string word, vector<vector<int>> &puzzleHash, int wordNumber)
 {
     bool found = false;
     int wordSize = word.size();
@@ -261,12 +229,13 @@ void searchVerticalUp(vector<vector<char>> puzzle, int row, int col, string word
 
         for (i = p; p - i < wordSize; i--)
         {
-            puzzleHash[i][q] = (wordNumber % 8) + 1;
+            puzzleHash[i][q] = (wordNumber % 7) + 1;
         }
     }
 }
 
-void searchVerticalDown(vector<vector<char>> puzzle, int row, int col, string word, vector<vector<int>> &puzzleHash, int wordNumber)
+void searchVerticalDown(vector<vector<char>> puzzle, int row, int col,
+string word, vector<vector<int>> &puzzleHash, int wordNumber)
 {
     bool found = false;
     int wordSize = word.size();
@@ -315,12 +284,13 @@ void searchVerticalDown(vector<vector<char>> puzzle, int row, int col, string wo
 
         for (i = p; i - p < wordSize; i++)
         {
-            puzzleHash[i][q] = (wordNumber % 8) + 1;
+            puzzleHash[i][q] = (wordNumber % 7) + 1;
         }
     }
 }
 
-void searchDiagonalRightUp(vector<vector<char>> puzzle, int row, int col, string word, vector<vector<int>> &puzzleHash, int wordNumber)
+void searchDiagonalRightUp(vector<vector<char>> puzzle, int row, int col,
+string word, vector<vector<int>> &puzzleHash, int wordNumber)
 {
     bool found = false;
     int wordSize = word.size();
@@ -375,14 +345,15 @@ void searchDiagonalRightUp(vector<vector<char>> puzzle, int row, int col, string
         j = q;
         while (p - i < wordSize && j - q < wordSize)
         {
-            puzzleHash[i][j] = (wordNumber % 8) + 1;
+            puzzleHash[i][j] = (wordNumber % 7) + 1;
             i--;
             j++;
         }
     }
 }
 
-void searchDiagonalRightDown(vector<vector<char>> puzzle, int row, int col, string word, vector<vector<int>> &puzzleHash, int wordNumber)
+void searchDiagonalRightDown(vector<vector<char>> puzzle, int row, int col,
+string word, vector<vector<int>> &puzzleHash, int wordNumber)
 {
     bool found = false;
     int wordSize = word.size();
@@ -437,14 +408,15 @@ void searchDiagonalRightDown(vector<vector<char>> puzzle, int row, int col, stri
         j = q;
         while (i - p < wordSize && j - q < wordSize)
         {
-            puzzleHash[i][j] = (wordNumber % 8) + 1;
+            puzzleHash[i][j] = (wordNumber % 7) + 1;
             i++;
             j++;
         }
     }
 }
 
-void searchDiagonalLeftUp(vector<vector<char>> puzzle, int row, int col, string word, vector<vector<int>> &puzzleHash, int wordNumber)
+void searchDiagonalLeftUp(vector<vector<char>> puzzle, int row, int col,
+string word, vector<vector<int>> &puzzleHash, int wordNumber)
 {
     bool found = false;
     int wordSize = word.size();
@@ -499,14 +471,15 @@ void searchDiagonalLeftUp(vector<vector<char>> puzzle, int row, int col, string 
         j = q;
         while (p - i < wordSize && q - j < wordSize)
         {
-            puzzleHash[i][j] = (wordNumber % 8) + 1;
+            puzzleHash[i][j] = (wordNumber % 7) + 1;
             i--;
             j--;
         }
     }
 }
 
-void searchDiagonalLeftDown(vector<vector<char>> puzzle, int row, int col, string word, vector<vector<int>> &puzzleHash, int wordNumber)
+void searchDiagonalLeftDown(vector<vector<char>> puzzle, int row, int col,
+string word, vector<vector<int>> &puzzleHash, int wordNumber)
 {
     bool found = false;
     int wordSize = word.size();
@@ -561,7 +534,7 @@ void searchDiagonalLeftDown(vector<vector<char>> puzzle, int row, int col, strin
         j = q;
         while (i - p < wordSize && q - j < wordSize)
         {
-            puzzleHash[i][j] = (wordNumber % 8) + 1;
+            puzzleHash[i][j] = (wordNumber % 7) + 1;
             i++;
             j--;
         }

@@ -73,12 +73,12 @@ int main()
     string path;
     path = "../test/" + fileName;
     ifstream InputText(path);
-    // ofstream saveFile("answer.txt");
 
-    while (!InputText){
+    while (!InputText)
+    {
         cout << "File name doesn't exist, please try again!" << endl;
         cout << "Input your file name: ";
-        cin >> fileName; 
+        cin >> fileName;
         path = "../test/" + fileName;
         InputText.clear();
         InputText.seekg(0, InputText.beg);
@@ -102,18 +102,6 @@ int main()
         }
     }
 
-    // Check Input
-    // for (int i = 0; i < puzzle.size(); i++){
-    //     for (int j = 0; j < puzzle[i].size(); j++){
-    //         cout << puzzle[i][j];
-    //     }
-    //     cout << endl;
-    // }
-
-    // for (int i = 0; i < word.size(); i++){
-    //     cout << word[i] << endl;
-    // }
-
     // Start runtime
     auto start = high_resolution_clock::now();
 
@@ -133,8 +121,9 @@ int main()
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
 
+    cout << endl;
     printHash(puzzle, puzzleHash);
-    cout << "Execution Time: " << (float) (duration.count())/1000000 << " seconds" << endl;
+    cout << "Execution Time: " << (float)(duration.count()) / 1000000 << " seconds" << endl;
 
     InputText.close();
 }
